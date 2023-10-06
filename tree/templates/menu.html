@@ -1,0 +1,12 @@
+{% load static %}
+<br>
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+<div id="menu">
+    {% if menu %}
+
+        <h1><a href="{% if menu.link %}{{ menu.link }}{% else %}#{% endif %}">{{ menu.title }}</a></h1>
+        {% include 'submenu.html' with menu_items=menu_items indent=0 %}
+    {% else %}
+        <h1>⚠️ Ошибка</h1>
+    {% endif %}
+</div>

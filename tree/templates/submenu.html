@@ -1,0 +1,24 @@
+{% for key, value in menu_items.items %}
+    <div class="line" style="display: inline-flex;">
+        {% if value %}
+            <h2 onclick="toggleSubMenu('{{ key.pk }}', {{ indent }}); this.innerText = (this.innerText === '➡️' ? '⬇️' : '➡️')">➡️</h2>
+        {% endif %}
+        <h2 style="padding-left: 0.5em">{{ key.title }}</h2>
+    </div>
+    <div class="block" style="display: block;"></div>
+    {% if value.items %}
+        <div id="{{ key.pk }}" class="subsubmenu" style="display: none;">
+          {% include 'submenu.html' with menu_items=value indent=indent|add:1 %}
+        </div>
+    {% endif %}
+    <br>
+{% endfor %}
+
+<script>
+    function toggleSubMenu(key, indent) {
+      console.log(indent)
+      var submenu = document.getElementById(key);
+      submenu.style.display = (submenu.style.display === 'none') ? 'block' : 'none';
+      submenu.style.marginLeft = "25px"
+    }
+</script>

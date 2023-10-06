@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "django-tree"
+version = "0.1.0"
+description = ""
+authors = ["dop3file <merlinincorp@gmail.com>"]
+readme = "README.md"
+packages = [{include = "django_tree"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
