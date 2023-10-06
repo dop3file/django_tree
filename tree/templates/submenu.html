@@ -3,7 +3,12 @@
         {% if value %}
             <h2 onclick="toggleSubMenu('{{ key.pk }}', {{ indent }}); this.innerText = (this.innerText === '➡️' ? '⬇️' : '➡️')">➡️</h2>
         {% endif %}
-        <h2 style="padding-left: 0.5em">{{ key.title }}</h2>
+        {% if key.link %}
+            <h2 style="padding-left: 0.5em"><a href="{% if '.' in key.link %}{{ key.link }}{% else %}{% url key.link %}{% endif %}">{{ key.title }}</a></h2>
+        {% else %}
+            <h2 style="padding-left: 0.5em">{{ key.title }}</h2>
+        {% endif %}
+
     </div>
     <div class="block" style="display: block;"></div>
     {% if value.items %}

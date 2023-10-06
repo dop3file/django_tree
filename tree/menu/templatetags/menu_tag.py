@@ -1,7 +1,7 @@
 from django import template
 from django.template.loader import render_to_string
 
-from menu.controllers import get_menu_items, group_menu_items, get_menu
+from menu.services import Services, Crud
 
 
 register = template.Library()
@@ -9,11 +9,10 @@ register = template.Library()
 
 @register.simple_tag
 def draw_menu(title: str):
-    menu = get_menu(title)
     context = {
-        "menu": menu,
-        "menu_items": group_menu_items(
-            get_menu_items(menu)
+        "title": title,
+        "menu_items": Services.group_menu_items(
+            list(Crud.get_menu_items(title))
         )
     }
     template = "menu.html"
