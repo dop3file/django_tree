@@ -29,7 +29,6 @@ class Services:
     @staticmethod
     def group_menu_items(items: list[MenuItem]) -> dict:
         groups = {}
-        print(items)
         for item in items:
             Services._group_dfs(groups, item, items)
         return groups
